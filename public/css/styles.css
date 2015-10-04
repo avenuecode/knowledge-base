@@ -3,12 +3,30 @@
   background: #fff;
 }
 /* line 4, ../../scss/styles.scss */
+.pgApp .container {
+  margin-top: 20px;
+}
+/* line 8, ../../scss/styles.scss */
 .pgApp a.active {
   color: red;
 }
-/* line 8, ../../scss/styles.scss */
+/* line 12, ../../scss/styles.scss */
+.pgApp .hidden {
+  display: none;
+}
+/* line 16, ../../scss/styles.scss */
 .pgApp #addNewDocBtn {
   position: fixed;
   bottom: 20px;
   right: 20px;
+}
+/* line 22, ../../scss/styles.scss */
+.pgApp #progressBar {
+  margin: 0;
+  position: absolute;
+}
+
+/* line 29, ../../scss/styles.scss */
+.pgCard .chip {
+  margin-right: 5px;
 }

@@ -8,6 +8,14 @@ var NavBar = module.exports = React.createClass({
   componentDidMount: function() {
     $(".button-collapse").sideNav();
     $(".modal-trigger").leanModal();
+
+    $(document).on('ajax.active', function() {
+      $('#progressBar').show();
+    });
+
+    $(document).on('ajax.inactive', function() {
+      $('#progressBar').hide();
+    });
   },
 
   render: function() {
@@ -24,11 +32,13 @@ var NavBar = module.exports = React.createClass({
 
             <ul id="mobile-nav" className="side-nav">
               <li><Link to="index">Index</Link></li>
-              <li><Link to="foo">Components</Link></li>
-              <li><Link to="bar">JavaScript</Link></li>
+              <li><Link to="fetch">Atualizar Arquivos</Link></li>
             </ul>
           </div>
         </nav>
+        <div id="progressBar" className="progress hidden">
+          <div className="indeterminate"></div>
+        </div>
       </div>
     );
   }

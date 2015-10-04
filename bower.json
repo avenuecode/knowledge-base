@@ -23,6 +23,8 @@
     "tests"
   ],
   "dependencies": {
-    "materialize": "~0.97.1"
+    "materialize": "~0.97.1",
+    "jQuery-Storage-API": "https://github.com/julien-maurel/jQuery-Storage-API.git#~1.7.4",
+    "showdown": "~1.2.3"
   }
 }

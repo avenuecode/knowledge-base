@@ -1,13 +1,32 @@
 .pgApp {
 	background: #fff;
 
+	.container {
+		margin-top: 20px;
+	}
+
 	a.active {
 	  color: red;
+	}
+
+	.hidden {
+		display: none;
 	}
 
 	#addNewDocBtn {
 		position: fixed;
 		bottom: 20px;
 		right: 20px;
+	}
+
+	#progressBar {
+		margin: 0;
+		position: absolute;
+	}
+}
+
+.pgCard {
+	.chip {
+		margin-right: 5px;
 	}
 }

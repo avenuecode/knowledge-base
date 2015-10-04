@@ -12,8 +12,6 @@ var App = module.exports = React.createClass({
         <NavBar/>
         <div className="container">        
           {this.props.activeRouteHandler()}   
-
-          <AddNewDoc/>
         </div>
       </div>
     );
