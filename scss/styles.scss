@@ -1,0 +1,13 @@
+.pgApp {
+	background: #fff;
+
+	a.active {
+	  color: red;
+	}
+
+	#addNewDocBtn {
+		position: fixed;
+		bottom: 20px;
+		right: 20px;
+	}
+}

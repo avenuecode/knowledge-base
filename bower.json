@@ -1,0 +1,28 @@
+{
+  "name": "ReactJS Boilerplate",
+  "version": "1.0.0",
+  "homepage": "https://github.com/rackt/react-boilerplate",
+  "authors": [
+    "arlindosilvaneto <arlindosilvaneto@gmail.com>"
+  ],
+  "description": "ReactJS with Browserify and MaterializeCSS",
+  "main": "index.html",
+  "keywords": [
+    "reactjs",
+    "browserify",
+    "materialize",
+    "css"
+  ],
+  "license": "Proprietary",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "materialize": "~0.97.1"
+  }
+}

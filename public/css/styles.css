@@ -1,0 +1,14 @@
+/* line 1, ../../scss/styles.scss */
+.pgApp {
+  background: #fff;
+}
+/* line 4, ../../scss/styles.scss */
+.pgApp a.active {
+  color: red;
+}
+/* line 8, ../../scss/styles.scss */
+.pgApp #addNewDocBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
