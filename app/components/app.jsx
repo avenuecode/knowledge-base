@@ -1,17 +1,16 @@
-/** @jsx React.DOM */
+import React from 'react'
+import NavBar from './navbar.jsx'
+import Index from './index.jsx'
+import {Link} from 'react-router'
 
-var React = require('react');
-var NavBar = require('./navbar.jsx');
-var Link = require('react-router').Link;
-var Index = require('./index.jsx');
+export default class App extends React.Component {
+  
+  constructor(props) {
+    super(props);
 
-var App = module.exports = React.createClass({
-  storage: {},
-  importClasses: "btn-floating btn-large waves-effect waves-light btn modal-trigger red darken-3",
-
-  getInitialState: function() {
     var self = this;
 
+    this.importClasses = "btn-floating btn-large waves-effect waves-light btn modal-trigger red darken-3";
     this.storage = $.initNamespaceStorage('acnb_').localStorage;
 
     $(document).on('drive.loading.finish', function() {
@@ -28,21 +27,21 @@ var App = module.exports = React.createClass({
       });
     });
 
-    return {
+    this.state = {
       bIcon: 'cloud',
       importClasses: this.importClasses + ' disabled'
     };
-  },
+  }
 
-  checkGoogleLogin: function() {
+  checkGoogleLogin() {
     if(! this.state.logged) {
       checkAuth();
     } else {
       this.importFiles();
     }
-  },
+  }
 
-  importFiles: function() {
+  importFiles() {
     var self = this,
       request;
 
@@ -100,18 +99,18 @@ var App = module.exports = React.createClass({
         $(document).trigger('ajax.inactive');
       }
     }, "fullText contains '\"ACKB: 1.0\"'");
-  },
+  }
 
-  render: function() {
+  render() {
     return (
       <div>
         <NavBar/>
         <div className="row">
           <div className="col l12 m12 s12">
             <div className="container">        
-              <Index/>
+              {this.props.children}
 
-              <a onClick={this.checkGoogleLogin} id="importButton" className={this.state.importClasses} href="#"><i className="material-icons">{this.state.bIcon}</i></a>
+              <a onClick={this.checkGoogleLogin.bind(this)} id="importButton" className={this.state.importClasses} href="#"><i className="material-icons">{this.state.bIcon}</i></a>
             </div>
           </div>
         </div>
@@ -119,5 +118,5 @@ var App = module.exports = React.createClass({
     );
   }
 
-});
+}
 

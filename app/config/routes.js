@@ -1,15 +1,14 @@
 /** @jsx React.DOM */
-var Router = require('react-router');
-var Routes = Router.Routes
-var Route = Router.Route;
 var React = require('react');
+var Router = require('react-router').Router;
+var Routes = Router.Routes;
+var Route = require('react-router').Route;
 
-module.exports = (
-  <Routes location="history">
-    <Route handler={require('../components/app')}>
-    	<Route name="index" path="/" handler={require('../components/index')} />
-		<Route name="fetch" handler={require('../components/fetch')} />      
-    </Route>
-  </Routes>
+var AppRouter = module.exports = (
+	<Router>
+		<Route path="/" component={require('../components/app')}>
+			<Route path="index" component={require('../components/index')} />
+			<Route path="fetch" component={require('../components/fetch')} />      
+		</Route>
+	</Router>
 );
-

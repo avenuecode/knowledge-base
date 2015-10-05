@@ -2,7 +2,7 @@
 	background: #fff;
 
 	.container {
-		margin-top: 20px;
+		margin: 20px 10px 0 20px;
 	}
 
 	a.active {
@@ -13,7 +13,7 @@
 		display: none;
 	}
 
-	#addNewDocBtn {
+	#importButton {
 		position: fixed;
 		bottom: 20px;
 		right: 20px;
@@ -28,5 +28,12 @@
 .pgCard {
 	.chip {
 		margin-right: 5px;
+		margin-top: 5px;
+	}
+}
+
+.pgNav {
+	.brand-logo {
+		padding-left: 20px;
 	}
 }

@@ -1,12 +1,12 @@
-/** @jsx React.DOM */
+import React from 'react'
+import {Link} from 'react-router'
 
-var React = require('react');
-var Link = require('react-router').Link;
+export default class NavBar extends React.Component {
 
-var NavBar = module.exports = React.createClass({
-
-  componentDidMount: function() {
-    $(".button-collapse").sideNav();
+  componentDidMount() {
+    $(".button-collapse").sideNav({
+      closeOnClick: true
+    });
 
     $(document).on('ajax.active', function() {
       $('#progressBar').show();
@@ -15,19 +15,19 @@ var NavBar = module.exports = React.createClass({
     $(document).on('ajax.inactive', function() {
       $('#progressBar').hide();
     });
-  },
+  }
 
-  filterChanged: function(event) {
+  filterChanged(event) {
     var filter = event.target.value;
 
     $(document).trigger('filter.docs', {filter: filter});
-  },
+  }
 
-  clearFilter: function() {
+  clearFilter() {
     $(document).trigger('filter.docs', {filter: ''});
-  },
+  }
 
-  render: function() {
+  render() {
     return (
       <div className="pgNav">
         <nav>
@@ -37,9 +37,9 @@ var NavBar = module.exports = React.createClass({
 
             <ul className="right hide-on-med-and-down">
               <div className="input-field">
-                <input onChange={this.filterChanged} id="search" type="search" required/>
+                <input onChange={this.filterChanged.bind(this)} id="search" type="search" required/>
                 <label for="search"><i className="material-icons">search</i></label>
-                <i onClick={this.clearFilter} className="material-icons">close</i>
+                <i onClick={this.clearFilter.bind(this)} className="material-icons">close</i>
               </div>
             </ul>
 
@@ -57,5 +57,5 @@ var NavBar = module.exports = React.createClass({
     );
   }
 
-});
+}
 

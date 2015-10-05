@@ -1,21 +1,15 @@
-/** @jsx React.DOM */
+import React from 'react'
+import _ from 'lodash'
 
-var React = require('react');
-var _ = require('lodash');
-var Router = require('react-router');
+export default class Fetch extends React.Component {
+	constructor(props) {
+		super(props);
 
-var Index = module.exports = React.createClass({
-	mixins: [Router.Navigation],
-
-	storage: {},
-
-	getInitialState: function() {
+		// class variables declarations
 		this.storage = $.initNamespaceStorage('acnb_').localStorage;
+	}
 
-		return {};
-	},
-
-	fetchDocs: function() {
+	fetchDocs() {
 		var self = this,
 			request;
 
@@ -74,18 +68,18 @@ var Index = module.exports = React.createClass({
 			  $(document).trigger('ajax.inactive');
 			}
 		}, "fullText contains '\"ACKB: 1.0\"'");
-	},
+	}
 
-	componentDidUpdate: function() {
+	componentDidUpdate() {
 		
-	},
+	}
 
-	render: function() {
+	render() {
 		return (
 			<div>			
 				<a href="#" onClick={this.fetchDocs} className="waves-effect waves-light btn-large"><i className="material-icons left">cloud</i>Sincronizar Arquivos</a>
 		    </div>
 		);
 	}
-});
+}
 

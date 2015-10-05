@@ -8,8 +8,7 @@ var SCOPES = ['https://www.googleapis.com/auth/drive'];
  * Check if current user has authorized this application.
  */
 function checkAuth() {
-  gapi.auth.authorize(
-    {
+  gapi.auth.authorize({
       'client_id': CLIENT_ID,
       'scope': SCOPES.join(' '),
       'immediate': false
@@ -45,9 +44,18 @@ function handleAuthClick(event) {
  * Triggers the event indicating the loading is finished
  */
 function informFinishLoading() {
+  console.log('GOOGLE DRIVE API LOADDED');
+
+  $(document).trigger('drive.loading.finish');
+}
+
+/**
+ * Trigger the event indicating the loading of google is finished
+ */
+function informGoogleLoaded() {
   console.log('GOOGLE API LOADDED');
 
-  $(document).trigger('loading.finish');
+  $(document).trigger('google.loading.finish'); 
 }
 
 /**

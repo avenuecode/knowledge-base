@@ -1,10 +1,10 @@
-/** @jsx React.DOM */
+import React from 'react'
 
-var React = require('react');
+export default class Editor extends React.Component {
 
-var Editor = module.exports = React.createClass({
+	constructor(props) {
+		super(props);
 
-	getInitialState: function() {
 		var self = this;
 
 		$(document).on('file.open', function(event, file) {
@@ -16,11 +16,11 @@ var Editor = module.exports = React.createClass({
 				$('#mdModal').openModal();
 			});
 		});
-		
-		return {};
-	},
+
+		this.state = {};
+	}
 	
-	render: function() {
+	render() {
 		return (
 			<div id="mdModal" className="modal modal-fixed-footer">
 	          <div className="modal-content">
@@ -32,4 +32,4 @@ var Editor = module.exports = React.createClass({
 	        </div>
 		);
 	}
-});
+}

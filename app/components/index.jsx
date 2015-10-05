@@ -1,21 +1,18 @@
-/** @jsx React.DOM */
+import React from 'react'
+import Card from './card.jsx'
+import Editor from './editor.jsx'
 
-var React = require('react');
-var Card = require('./card.jsx');
-var Editor = require('./editor');
+export default class Index extends React.Component {
 
-var Index = module.exports = React.createClass({
-	storage: null,
+	constructor(props) {
+		super(props);
 
-	getInitialState: function() {
-		var self = this;
+		let self = this;
 
 		$(document).on('new.docs', function(event) {
-			if(self.isMounted) {
-				self.setState({
-					files: self.storage.get('files')
-				});
-			}
+			self.setState({
+				files: self.storage.get('files')
+			});
 		});
 
 		$(document).on('filter.docs', function(event, filter) {
@@ -29,23 +26,22 @@ var Index = module.exports = React.createClass({
 		// local storage initialization
 		this.storage = $.initNamespaceStorage('acnb_').localStorage;
 
-		return {
+		this.state = {
 			files: this.storage.get('files'),
 			filter: ''
 		};
-	},
+	}
 
-	componentDidMount: function() {
+	componentDidMount() {
 		var self = this;
 
+	}
 
-	},
-
-	componentDidUpdate: function() {
+	componentDidUpdate() {
 		
-	},
+	}
 
-	render: function() {
+	render() {
 		return (
 			<div>
 				<div className="row grid">	      
@@ -58,5 +54,4 @@ var Index = module.exports = React.createClass({
 			</div>
 		);
 	}
-});
-
+}

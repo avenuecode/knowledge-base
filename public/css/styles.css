@@ -4,7 +4,7 @@
 }
 /* line 4, ../../scss/styles.scss */
 .pgApp .container {
-  margin-top: 20px;
+  margin: 20px 10px 0 20px;
 }
 /* line 8, ../../scss/styles.scss */
 .pgApp a.active {
@@ -15,7 +15,7 @@
   display: none;
 }
 /* line 16, ../../scss/styles.scss */
-.pgApp #addNewDocBtn {
+.pgApp #importButton {
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -29,4 +29,10 @@
 /* line 29, ../../scss/styles.scss */
 .pgCard .chip {
   margin-right: 5px;
+  margin-top: 5px;
+}
+
+/* line 36, ../../scss/styles.scss */
+.pgNav .brand-logo {
+  padding-left: 20px;
 }
