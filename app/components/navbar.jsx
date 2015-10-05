@@ -24,7 +24,8 @@ export default class NavBar extends React.Component {
   }
 
   clearFilter() {
-    $(document).trigger('filter.docs', {filter: ''});
+    $(document).trigger('filter.docs', {filter: ''})
+      .find('input#search').val('');
   }
 
   render() {
@@ -38,7 +39,7 @@ export default class NavBar extends React.Component {
             <ul className="right hide-on-med-and-down">
               <div className="input-field">
                 <input onChange={this.filterChanged.bind(this)} id="search" type="search" required/>
-                <label for="search"><i className="material-icons">search</i></label>
+                <label><i className="material-icons">search</i></label>
                 <i onClick={this.clearFilter.bind(this)} className="material-icons">close</i>
               </div>
             </ul>

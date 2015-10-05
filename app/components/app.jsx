@@ -1,12 +1,13 @@
 import React from 'react'
 import NavBar from './navbar.jsx'
 import Index from './index.jsx'
+import Editor from './editor.jsx'
 import {Link} from 'react-router'
 
 export default class App extends React.Component {
   
   constructor(props) {
-    super(props);
+    super();
 
     var self = this;
 
@@ -73,7 +74,7 @@ export default class App extends React.Component {
 
           // fetch file
           downloadFile(file, function(fileContent) {
-            var regex = /(ACKB: 1.0)\sCOMMON NAME:(.*)\sSUBJECT:(.*)\sMOTIVATION:(.*)\sTAGS:(.*)/,
+            var regex = /<!--\s(ACKB: 1.0)\sCOMMON NAME:(.*)\sSUBJECT:(.*)\sMOTIVATION:(.*)\sTAGS:(.*)\s-->\s\s/,
               matches = regex.exec(fileContent);
 
             if(matches) {
@@ -110,10 +111,12 @@ export default class App extends React.Component {
             <div className="container">        
               {this.props.children}
 
-              <a onClick={this.checkGoogleLogin.bind(this)} id="importButton" className={this.state.importClasses} href="#"><i className="material-icons">{this.state.bIcon}</i></a>
+              <a href="#" onClick={this.checkGoogleLogin.bind(this)} id="importButton" className={this.state.importClasses}><i className="material-icons">{this.state.bIcon}</i></a>
             </div>
           </div>
         </div>
+
+        <Editor/>
       </div>
     );
   }

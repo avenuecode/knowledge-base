@@ -10,7 +10,7 @@ export default class Card extends React.Component {
 		this.state = {};
 	}
 
-	openFile() {
+	openFile(event) {
 		var file = this.props.file;
 
 		$(document).trigger('file.open', file);
@@ -37,8 +37,8 @@ export default class Card extends React.Component {
 					  </div>
 				      <h5>{file.subject}</h5>
 				      <h6>Motivado por: {file.motivation}</h6>
-				      {file.tags.map(function(tag) {
-				      	return <div className="chip">{tag}</div>
+				      {file.tags.map(function(tag, index) {
+				      	return <div key={index} className="chip">{tag}</div>
 				      })}
 				      <div className={file.shared ? 'chip green' : 'chip blue white-text darken-4'}>
 				      	{file.shared ? 'Compartilhado' : 'Não Compartilhado'}

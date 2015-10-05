@@ -11,7 +11,7 @@ export default class Editor extends React.Component {
 			var converter = new showdown.Converter();
 
 			self.setState({
-				content: converter.makeHtml(file.content)
+				content: converter.makeHtml(self.cleanUp(file.content))
 			}, function() {
 				$('#mdModal').openModal();
 			});
@@ -20,6 +20,12 @@ export default class Editor extends React.Component {
 		this.state = {};
 	}
 	
+	cleanUp(data) {
+		data = data.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+
+		return data;
+	}
+
 	render() {
 		return (
 			<div id="mdModal" className="modal modal-fixed-footer">
@@ -27,7 +33,7 @@ export default class Editor extends React.Component {
 	            <div className="content-wrapper" dangerouslySetInnerHTML={{__html: this.state.content}}></div>	            
 	          </div>
 	          <div className="modal-footer">
-	            <a href="#!" className="modal-action modal-close waves-effect waves-red btn-flat">Fechar</a>
+	            <a href="#" className="modal-action modal-close waves-effect waves-red btn-flat">Fechar</a>
 	          </div>
 	        </div>
 		);

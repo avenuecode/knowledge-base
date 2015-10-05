@@ -1,6 +1,5 @@
 import React from 'react'
 import Card from './card.jsx'
-import Editor from './editor.jsx'
 
 export default class Index extends React.Component {
 
@@ -46,11 +45,9 @@ export default class Index extends React.Component {
 			<div>
 				<div className="row grid">	      
 					{this.state.files && this.state.files.map(function(file) {
-						return <Card file={file} className="col s12 m6 l4"/>
+						return <Card file={file} key={file.id} className="col s12 m6 l4"/>
 					})}			
 			    </div>
-
-			   	<Editor/>
 			</div>
 		);
 	}
