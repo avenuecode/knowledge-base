@@ -35,6 +35,7 @@ export default class Card extends React.Component {
 					    <img src={file.picture} alt="Contact Person"/>
 				    	{file.commonName}
 					  </div>
+					  <h5>{file.title}</h5>
 				      <h5>{file.subject}</h5>
 				      <h6>Motivado por: {file.motivation}</h6>
 				      {file.tags.map(function(tag, index) {

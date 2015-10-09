@@ -1,3 +1,5 @@
+@import 'overrides';
+
 .pgApp {
 	background: #fff;
 
@@ -36,4 +38,12 @@
 	.brand-logo {
 		padding-left: 20px;
 	}
+}
+
+.fullScreenModalClass {
+	position: absolute;
+    top: 0 !important;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
 }

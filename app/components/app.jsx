@@ -50,6 +50,7 @@ export default class App extends React.Component {
 
     retrieveAllFiles(function(files) {
       var results = [],
+        tags = self.storage.get('tags') || [],
         count;
 
       console.log(files);
@@ -69,7 +70,8 @@ export default class App extends React.Component {
             title: file.title,
             picture: hasPicture ? file.owners[0].picture.url.replace('s64', 's256') : 'img/default-avatar.png',
             downloadUrl: file.downloadUrl,
-            shared: file.shared
+            shared: file.shared,
+            owner: file.userPermission.role === "owner"
           };
 
           // fetch file
@@ -82,14 +84,22 @@ export default class App extends React.Component {
               content.subject = matches[3];
               content.motivation = matches[4];
               content.tags = matches[5].trim().split(/\s/);
-              content.content = fileContent.replace(regex, '').trim();
+              content.content = fileContent.trim();
 
               results.push(content);
+
+              // add tags to the list
+              tags = tags.concat(content.tags);
             }
 
             count--;
             if(count === 0) {
               self.storage.set('files', results);
+
+              // normalize and store tag names
+              self.storage.set('tags', tags.filter(function(tag, index, array) {
+                return array.indexOf(tag) === index;
+              }, self).sort());
 
               $(document).trigger('new.docs');
               $(document).trigger('ajax.inactive');

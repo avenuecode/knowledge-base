@@ -3,6 +3,13 @@ import {Link} from 'react-router'
 
 export default class NavBar extends React.Component {
 
+  constructor() {
+    super();
+
+    this.storage = $.initNamespaceStorage('acnb_').localStorage;
+    this.tags = this.storage.get('tags') || [];
+  }
+
   componentDidMount() {
     $(".button-collapse").sideNav({
       closeOnClick: true
@@ -20,11 +27,11 @@ export default class NavBar extends React.Component {
   filterChanged(event) {
     var filter = event.target.value;
 
-    $(document).trigger('filter.docs', {filter: filter});
+    $(document).trigger('filter.docs', filter);
   }
 
   clearFilter() {
-    $(document).trigger('filter.docs', {filter: ''})
+    $(document).trigger('filter.docs', '')
       .find('input#search').val('');
   }
 
@@ -38,9 +45,9 @@ export default class NavBar extends React.Component {
 
             <ul className="right hide-on-med-and-down">
               <div className="input-field">
-                <input onChange={this.filterChanged.bind(this)} id="search" type="search" required/>
+                <input onChange={this.filterChanged.bind(this)} className="selectize" id="search" type="search" required/>
                 <label><i className="material-icons">search</i></label>
-                <i onClick={this.clearFilter.bind(this)} className="material-icons">close</i>
+                <i onClick={this.clearFilter.bind(this)} className="material-icons clear-search">close</i>
               </div>
             </ul>
 

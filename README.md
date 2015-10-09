@@ -56,6 +56,7 @@ To share information between users, a developer need to specify a group or user,
 
 ## Next Steps
 
+1. Filter contents agains local storage contents.
 1. Create a MD editor inside the platform to allow users to share information inside it, instead of using Google Drive to do this.
 2. Question and Answer platform to increase the ability to reach more people in the cloud.
 3. Ranking system to allow us to see who has more contributions to the knowledge base.

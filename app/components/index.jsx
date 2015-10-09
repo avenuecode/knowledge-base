@@ -1,5 +1,6 @@
 import React from 'react'
 import Card from './card.jsx'
+import _ from 'lodash'
 
 export default class Index extends React.Component {
 
@@ -15,11 +16,7 @@ export default class Index extends React.Component {
 		});
 
 		$(document).on('filter.docs', function(event, filter) {
-			if(self.isMounted) {
-				self.setState({
-					filter: filter
-				});
-			}
+			self.doFilter(filter.trim());
 		});
 
 		// local storage initialization
@@ -38,6 +35,30 @@ export default class Index extends React.Component {
 
 	componentDidUpdate() {
 		
+	}
+
+	doFilter(filter) {
+		var files = this.storage.get('files');
+
+		if(filter) {
+			files = files.filter(function(file, index, files) {
+				var hasContent = false;
+
+				_.forEach(file.tags, function(tag) {
+					if(~tag.indexOf(filter)) {
+						hasContent = true;
+
+						return false;
+					}
+				});
+
+				return hasContent;
+			}, this);
+		} 
+		
+		this.setState({
+			files: files
+		});	
 	}
 
 	render() {
