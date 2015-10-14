@@ -4,7 +4,8 @@
 	background: #fff;
 
 	.container {
-		margin: 20px 10px 0 20px;
+		width: 100%;
+		//margin: 20px;
 	}
 
 	a.active {
@@ -19,6 +20,12 @@
 		position: fixed;
 		bottom: 20px;
 		right: 20px;
+	}
+
+	#newDocButton {
+		position: fixed;
+		bottom: 20px;
+		right: 80px;
 	}
 
 	#progressBar {

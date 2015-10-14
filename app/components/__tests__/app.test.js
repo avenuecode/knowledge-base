@@ -1,5 +1,5 @@
 var React = require('react');
-var App = require('../app');
+var App = require('../app.jsx');
 
 describe('app', function() {
   it('renders links', function(done) {
@@ -8,4 +8,3 @@ describe('app', function() {
     done();
   });
 });
-

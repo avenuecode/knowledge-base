@@ -3,6 +3,7 @@ import NavBar from './navbar.jsx'
 import Index from './index.jsx'
 import Editor from './editor.jsx'
 import {Link} from 'react-router'
+import Utils from '../utils/utils.jsx'
 
 export default class App extends React.Component {
   
@@ -11,10 +12,9 @@ export default class App extends React.Component {
 
     var self = this;
 
-    this.importClasses = "btn-floating btn-large waves-effect waves-light btn modal-trigger red darken-3";
     this.storage = $.initNamespaceStorage('acnb_').localStorage;
 
-    $(document).on('drive.loading.finish', function() {
+    Utils.listen('user.logged', function() {
       self.setState({
         logged: true
       });
@@ -22,16 +22,17 @@ export default class App extends React.Component {
       self.importFiles();
     });
 
-    $(document).on('google.loading.finish', function() {
+    Utils.listen('user.ready', function() {
       self.setState({
-        importClasses: self.importClasses
+        online: true
       });
     });
 
-    this.state = {
-      bIcon: 'cloud',
-      importClasses: this.importClasses + ' disabled'
-    };
+    Utils.listen('file.fetch', function() {
+      self.importFiles();
+    });
+
+    this.state = {};
   }
 
   checkGoogleLogin() {
@@ -42,11 +43,15 @@ export default class App extends React.Component {
     }
   }
 
+  addNewDoc() {
+    Utils.notify('file.new');
+  }
+
   importFiles() {
     var self = this,
       request;
 
-    $(document).trigger('ajax.active');
+    Utils.notify('ajax.active');
 
     retrieveAllFiles(function(files) {
       var results = [],
@@ -90,6 +95,8 @@ export default class App extends React.Component {
 
               // add tags to the list
               tags = tags.concat(content.tags);
+            } else {
+              console.log('File ' + file + ' didn\'t match.');
             }
 
             count--;
@@ -101,13 +108,13 @@ export default class App extends React.Component {
                 return array.indexOf(tag) === index;
               }, self).sort());
 
-              $(document).trigger('new.docs');
-              $(document).trigger('ajax.inactive');
+              Utils.notify('file.update');
+              Utils.notify('ajax.inactive');
             }
           });
         });
       } else {
-        $(document).trigger('ajax.inactive');
+        Utils.notify('ajax.inactive');
       }
     }, "fullText contains '\"ACKB: 1.0\"'");
   }
@@ -121,7 +128,8 @@ export default class App extends React.Component {
             <div className="container">        
               {this.props.children}
 
-              <a href="#" onClick={this.checkGoogleLogin.bind(this)} id="importButton" className={this.state.importClasses}><i className="material-icons">{this.state.bIcon}</i></a>
+              <a href="#" onClick={this.addNewDoc.bind(this)} id="newDocButton" className={'btn-floating btn-large waves-effect waves-light btn modal-trigger green darken-3' + (this.state.logged ? '' : ' disabled')}><i className="material-icons">add</i></a>
+              <a href="#" onClick={this.checkGoogleLogin.bind(this)} id="importButton" className={'btn-floating btn-large waves-effect waves-light btn modal-trigger red darken-3' + (this.state.online ? '' : ' disabled')}><i className="material-icons">cloud</i></a>              
             </div>
           </div>
         </div>
@@ -130,6 +138,5 @@ export default class App extends React.Component {
       </div>
     );
   }
-
 }
 

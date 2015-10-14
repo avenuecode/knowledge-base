@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router'
+import Utils from '../utils/utils.jsx'
 
 export default class NavBar extends React.Component {
 
@@ -15,11 +16,11 @@ export default class NavBar extends React.Component {
       closeOnClick: true
     });
 
-    $(document).on('ajax.active', function() {
+    Utils.listen('ajax.active', function() {
       $('#progressBar').show();
     });
 
-    $(document).on('ajax.inactive', function() {
+    Utils.listen('ajax.inactive', function() {
       $('#progressBar').hide();
     });
   }
@@ -27,12 +28,13 @@ export default class NavBar extends React.Component {
   filterChanged(event) {
     var filter = event.target.value;
 
-    $(document).trigger('filter.docs', filter);
+    Utils.notify('file.filter', filter);
   }
 
   clearFilter() {
-    $(document).trigger('filter.docs', '')
-      .find('input#search').val('');
+    Utils.notify('file.filter', '')
+    
+    $(document).find('input#search').val('');
   }
 
   render() {

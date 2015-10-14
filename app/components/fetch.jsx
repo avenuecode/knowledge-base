@@ -1,5 +1,6 @@
 import React from 'react'
 import _ from 'lodash'
+import Utils from '../utils/utils.jsx'
 
 export default class Fetch extends React.Component {
 	constructor(props) {
@@ -13,7 +14,7 @@ export default class Fetch extends React.Component {
 		var self = this,
 			request;
 
-		$(document).trigger('ajax.active');
+		Utils.notify('ajax.active');
 
 		retrieveAllFiles(function(files) {
 			var results = [],
@@ -57,15 +58,15 @@ export default class Fetch extends React.Component {
 						if(count === 0) {
 							self.storage.set('files', results);
 
-					        $(document).trigger('new.docs', results);
-					        $(document).trigger('ajax.inactive');
+					        Utils.notify('file.update');
+					        Utils.notify('ajax.inactive');
 
 					        self.transitionTo('index');
 						}
 					});
 		        });
 			} else {
-			  $(document).trigger('ajax.inactive');
+			  Utils.notify('ajax.inactive');
 			}
 		}, "fullText contains '\"ACKB: 1.0\"'");
 	}

@@ -46,7 +46,7 @@ function handleAuthClick(event) {
 function informFinishLoading() {
   console.log('GOOGLE DRIVE API LOADDED');
 
-  $(document).trigger('drive.loading.finish');
+  $(document).trigger('user.logged');
 }
 
 /**
@@ -55,7 +55,7 @@ function informFinishLoading() {
 function informGoogleLoaded() {
   console.log('GOOGLE API LOADDED');
 
-  $(document).trigger('google.loading.finish'); 
+  $(document).trigger('user.ready'); 
 }
 
 /**
@@ -163,5 +163,45 @@ function updateFile(fileId, fileMetadata, fileData, callback) {
       console.log(file)
     };
   }
+  request.execute(callback);
+}
+
+function insertFile(fileData, fileName, callback) {
+  const boundary = '-------314159265358979323846';
+  const delimiter = "\r\n--" + boundary + "\r\n";
+  const close_delim = "\r\n--" + boundary + "--";
+
+  var contentType = 'text/plain; charset=utf-8';
+  var metadata = {
+    'title': fileName,
+    'mimeType': contentType
+  };
+
+  var base64Data = btoa(unescape(encodeURIComponent(fileData)));
+  var multipartRequestBody =
+      delimiter +
+      'Content-Type: application/json\r\n\r\n' +
+      JSON.stringify(metadata) +
+      delimiter +
+      'Content-Type: ' + contentType + '\r\n' +
+      'Content-Transfer-Encoding: base64\r\n' +
+      '\r\n' +
+      base64Data +
+      close_delim;
+
+  var request = gapi.client.request({
+      'path': '/upload/drive/v2/files',
+      'method': 'POST',
+      'params': {'uploadType': 'multipart'},
+      'headers': {
+        'Content-Type': 'multipart/mixed; boundary="' + boundary + '"'
+      },
+      'body': multipartRequestBody});
+  if (!callback) {
+    callback = function(file) {
+      console.log(file)
+    };
+  }
+
   request.execute(callback);
 }

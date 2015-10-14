@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import Utils from '../utils/utils.jsx'
 
 export default class Card extends React.Component {
 
@@ -13,7 +14,7 @@ export default class Card extends React.Component {
 	openFile(event) {
 		var file = this.props.file;
 
-		$(document).trigger('file.open', file);
+		Utils.notify('file.open', file);
 	}
 	
 	render() {

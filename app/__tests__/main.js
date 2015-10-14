@@ -4,4 +4,3 @@ require('./helpers');
 // for every spec file, there must be some sort of config but I can't find it ...
 // so for now, just add every spec you have here :\
 require('../components/__tests__/app.test');
-

@@ -1,6 +1,7 @@
 import React from 'react'
 import Card from './card.jsx'
 import _ from 'lodash'
+import Utils from '../utils/utils.jsx'
 
 export default class Index extends React.Component {
 
@@ -9,13 +10,13 @@ export default class Index extends React.Component {
 
 		let self = this;
 
-		$(document).on('new.docs', function(event) {
+		Utils.listen('file.update', function(event) {
 			self.setState({
 				files: self.storage.get('files')
 			});
 		});
 
-		$(document).on('filter.docs', function(event, filter) {
+		Utils.listen('file.filter', function(event, filter) {
 			self.doFilter(filter.trim());
 		});
 
@@ -66,7 +67,7 @@ export default class Index extends React.Component {
 			<div>
 				<div className="row grid">	      
 					{this.state.files && this.state.files.map(function(file) {
-						return <Card file={file} key={file.id} className="col s12 m6 l4"/>
+						return <Card file={file} key={file.id} className="col s12 m4 l3"/>
 					})}			
 			    </div>
 			</div>

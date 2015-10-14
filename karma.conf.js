@@ -21,7 +21,14 @@ module.exports = function(config) {
       cache: true,
       module: {
         loaders: [
-          {test: /\.js$/, loader: 'jsx-loader'}
+          {
+            test: /\.js$/, 
+            loader: 'jsx-loader'
+          }, {
+            test: /\.jsx$/, 
+            exclude: /(node_modules|bower_components)/,
+            loader: 'babel-loader'
+        }
         ]
       }
     },

@@ -4,40 +4,46 @@
 }
 /* line 6, ../../scss/styles.scss */
 .pgApp .container {
-  margin: 20px 10px 0 20px;
+  width: 100%;
 }
-/* line 10, ../../scss/styles.scss */
+/* line 11, ../../scss/styles.scss */
 .pgApp a.active {
   color: red;
 }
-/* line 14, ../../scss/styles.scss */
+/* line 15, ../../scss/styles.scss */
 .pgApp .hidden {
   display: none;
 }
-/* line 18, ../../scss/styles.scss */
+/* line 19, ../../scss/styles.scss */
 .pgApp #importButton {
   position: fixed;
   bottom: 20px;
   right: 20px;
 }
-/* line 24, ../../scss/styles.scss */
+/* line 25, ../../scss/styles.scss */
+.pgApp #newDocButton {
+  position: fixed;
+  bottom: 20px;
+  right: 80px;
+}
+/* line 31, ../../scss/styles.scss */
 .pgApp #progressBar {
   margin: 0;
   position: absolute;
 }
 
-/* line 31, ../../scss/styles.scss */
+/* line 38, ../../scss/styles.scss */
 .pgCard .chip {
   margin-right: 5px;
   margin-top: 5px;
 }
 
-/* line 38, ../../scss/styles.scss */
+/* line 45, ../../scss/styles.scss */
 .pgNav .brand-logo {
   padding-left: 20px;
 }
 
-/* line 43, ../../scss/styles.scss */
+/* line 50, ../../scss/styles.scss */
 .fullScreenModalClass {
   position: absolute;
   top: 0 !important;
