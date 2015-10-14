@@ -76,7 +76,9 @@ export default class App extends React.Component {
             picture: hasPicture ? file.owners[0].picture.url.replace('s64', 's256') : 'img/default-avatar.png',
             downloadUrl: file.downloadUrl,
             shared: file.shared,
-            owner: file.userPermission.role === "owner"
+            owner: file.userPermission.role === "owner",
+            icon: file.iconLink,
+            alternateLink: file.alternateLink
           };
 
           // fetch file

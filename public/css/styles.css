@@ -37,13 +37,21 @@
   margin-right: 5px;
   margin-top: 5px;
 }
+/* line 43, ../../scss/styles.scss */
+.pgCard .card-buttons {
+  text-align: right;
+}
+/* line 46, ../../scss/styles.scss */
+.pgCard .card-buttons a {
+  margin-left: 5px;
+}
 
-/* line 45, ../../scss/styles.scss */
+/* line 53, ../../scss/styles.scss */
 .pgNav .brand-logo {
   padding-left: 20px;
 }
 
-/* line 50, ../../scss/styles.scss */
+/* line 58, ../../scss/styles.scss */
 .fullScreenModalClass {
   position: absolute;
   top: 0 !important;

@@ -27,8 +27,11 @@ export default class Card extends React.Component {
 				      <img className="activator" src={file.picture}/>
 				    </div>
 				    <div className="card-content">
-				      <span className="card-title activator grey-text text-darken-4">{file.subject}<i className="material-icons right">more_vert</i></span>
-				      <p><a href="#" onClick={this.openFile.bind(this)}>Abrir Documento</a></p>
+				      <img src={file.icon}/><span className="card-title activator grey-text text-darken-4">{file.subject}<i className="material-icons right">more_vert</i></span>
+				      <div className="card-buttons">
+				      	<a className="btn-floating btn-medium waves-effect waves-light blue" href="#" onClick={this.openFile.bind(this)}><i className="material-icons">visibility</i></a>
+				      	<a className="btn-floating btn-medium waves-effect waves-light red" href={file.alternateLink} target="_blank"><i className="material-icons">library_books</i></a>
+				      </div>
 				    </div>
 				    <div className="card-reveal">
 				      <span className="card-title grey-text text-darken-4"><i className="material-icons right">close</i></span>

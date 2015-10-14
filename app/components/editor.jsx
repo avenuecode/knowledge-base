@@ -171,6 +171,8 @@ export default class Editor extends React.Component {
 	            content.downloadUrl = file.downloadUrl;
 	            content.shared = false;
 	            content.owner = true;
+	            content.icon = file.iconLink;
+            	content.alternateLink = file.alternateLink;
 
 				// add tags to the list
 				tags = self.storage.get('tags') || [];
