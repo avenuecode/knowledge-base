@@ -26,6 +26,7 @@
     "materialize": "~0.97.1",
     "jQuery-Storage-API": "https://github.com/julien-maurel/jQuery-Storage-API.git#~1.7.4",
     "showdown": "~1.2.3",
-    "EpicEditor": "https://github.com/OscarGodson/EpicEditor.git#~0.2.3"
+    "EpicEditor": "https://github.com/OscarGodson/EpicEditor.git#~0.2.3",
+    "jquery": "~2.1.4"
   }
 }
