@@ -11,6 +11,10 @@ export default class Card extends React.Component {
 		this.state = {};
 	}
 
+	componentDidMount() {
+		$('.tooltipped').tooltip({delay: 50});
+	}
+
 	openFile(event) {
 		var file = this.props.file;
 
@@ -29,12 +33,12 @@ export default class Card extends React.Component {
 				    <div className="card-content">
 				      <img src={file.icon}/>
 				      <span className="card-title activator grey-text text-darken-4">				      	
-				      	<a className="right" href="#"><i className="material-icons">more_vert</i></a>
+				      	<a data-position="left" data-tooltip="Outros Dados" className="tooltipped right" href="#"><i className="material-icons">more_vert</i></a>
 				      	{file.subject}
 				      </span>
 				      <div className="card-buttons">
-				      	<a className="btn-floating btn-medium waves-effect waves-light blue" href="#" onClick={this.openFile.bind(this)}><i className="material-icons">visibility</i></a>
-				      	<a className="btn-floating btn-medium waves-effect waves-light red" href={file.alternateLink} target="_blank"><i className="material-icons">library_books</i></a>
+				      	<a data-position="top" data-tooltip="Ver Documento" className="tooltipped btn-floating btn-medium waves-effect waves-light blue" href="#" onClick={this.openFile.bind(this)}><i className="material-icons">visibility</i></a>
+				      	<a data-position="top" data-tooltip="Ver Online/Compartilhar" className="tooltipped btn-floating btn-medium waves-effect waves-light red" href={file.alternateLink} target="_blank"><i className="material-icons">library_books</i></a>
 				      </div>
 				    </div>
 				    <div className="card-reveal">

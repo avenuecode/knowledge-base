@@ -33,6 +33,10 @@ export default class App extends React.Component {
     this.state = {};
   }
 
+  componentDidMount() {
+    $('.tooltipped').tooltip({delay: 50});
+  }
+
   checkLoginOrImport() {
     if(! this.state.logged) {
       checkAuth();
@@ -130,8 +134,8 @@ export default class App extends React.Component {
             <div className="container">        
               {this.props.children}
 
-              <a href="#" onClick={this.addNewDoc.bind(this)} id="newDocButton" className={'btn-floating btn-large waves-effect waves-light btn modal-trigger green darken-3' + (this.state.logged ? '' : ' disabled')}><i className="material-icons">add</i></a>
-              <a href="#" onClick={this.checkLoginOrImport.bind(this)} id="importButton" className={'btn-floating btn-large waves-effect waves-light btn modal-trigger darken-3' + (this.state.logged ? ' blue ' : ' red ') + (this.state.online ? '' : ' disabled')}><i className="material-icons">{this.state.logged ? 'cloud_download' : 'account_circle'}</i></a>              
+              <a href="#" onClick={this.addNewDoc.bind(this)} id="newDocButton" data-position="top" data-tooltip="Adicionar novo documento" className={'tooltipped btn-floating btn-large waves-effect waves-light btn modal-trigger green darken-3' + (this.state.logged ? '' : ' disabled')}><i className="material-icons">add</i></a>
+              <a href="#" onClick={this.checkLoginOrImport.bind(this)} id="importButton" data-position="top" data-tooltip={this.state.logged ? 'Sincronizar arquivos remotos' : 'Fazer login no Google Drive'} className={'tooltipped btn-floating btn-large waves-effect waves-light btn modal-trigger darken-3' + (this.state.logged ? ' blue ' : ' red ') + (this.state.online ? '' : ' disabled')}><i className="material-icons">{this.state.logged ? 'cloud_download' : 'account_circle'}</i></a>              
             </div>
           </div>
         </div>
