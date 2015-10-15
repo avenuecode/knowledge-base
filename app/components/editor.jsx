@@ -140,6 +140,8 @@ export default class Editor extends React.Component {
 
 			Utils.notify('file.update');
 			Utils.notify('ajax.inactive');
+
+			Utils.toast('Arquivo salvo!');
 		});
 	}
 
@@ -200,9 +202,13 @@ export default class Editor extends React.Component {
 				});
 
 				Utils.notify('ajax.inactive');
+
+				Utils.toast('Arquivo criado!');
 			});
         } else {
           console.log('File didn\'t match.');
+
+          Utils.toast('ERRO: Cabeçalho de arquivo inválido!');
         }
 	}
 

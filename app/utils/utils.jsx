@@ -10,4 +10,10 @@ export default class Utils {
 	static notify(dest, data) {
 		$(document).trigger(dest, data);
 	}
+
+	static toast(message, timeout) {
+		timeout = timeout || 4000;
+
+		Materialize.toast(message, timeout, 'rounded');
+	}
 }
