@@ -151,7 +151,8 @@ export default class Editor extends React.Component {
 			matches,
 			content = {},
 			tags,
-			files;
+			files,
+			fileName;
 
 		regex = /<!--\s(ACKB: 1.0)\sCOMMON NAME:(.*)\sSUBJECT:(.*)\sMOTIVATION:(.*)\sTAGS:(.*)\s-->\s\s/,
         matches = regex.exec(fileContent);
@@ -163,8 +164,10 @@ export default class Editor extends React.Component {
 			content.tags = matches[5].trim().split(/\s/);
 			content.content = fileContent.trim();
 
+			fileName = content.subject + '.ackb';
+
           	Utils.notify('ajax.active');
-			insertFile(fileContent, 'new-file.md', function(file) {
+			insertFile(fileContent, fileName, function(file) {
 	            content.id = file.id;
 	            content.title = file.title;
 	            content.picture = (file.owners && file.owners.length && file.owners[0].picture && file.owners[0].picture.url) ? file.owners[0].picture.url.replace('s64', 's256') : 'img/default-avatar.png';

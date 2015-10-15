@@ -18,8 +18,6 @@ export default class App extends React.Component {
       self.setState({
         logged: true
       });
-
-      self.importFiles();
     });
 
     Utils.listen('user.ready', function() {
@@ -131,7 +129,7 @@ export default class App extends React.Component {
               {this.props.children}
 
               <a href="#" onClick={this.addNewDoc.bind(this)} id="newDocButton" className={'btn-floating btn-large waves-effect waves-light btn modal-trigger green darken-3' + (this.state.logged ? '' : ' disabled')}><i className="material-icons">add</i></a>
-              <a href="#" onClick={this.checkGoogleLogin.bind(this)} id="importButton" className={'btn-floating btn-large waves-effect waves-light btn modal-trigger red darken-3' + (this.state.online ? '' : ' disabled')}><i className="material-icons">cloud</i></a>              
+              <a href="#" onClick={this.checkGoogleLogin.bind(this)} id="importButton" className={'btn-floating btn-large waves-effect waves-light btn modal-trigger darken-3' + (this.state.logged ? ' blue ' : ' red ') + (this.state.online ? '' : ' disabled')}><i className="material-icons">{this.state.logged ? 'cloud_download' : 'account_circle'}</i></a>              
             </div>
           </div>
         </div>

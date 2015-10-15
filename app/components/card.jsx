@@ -27,7 +27,11 @@ export default class Card extends React.Component {
 				      <img className="activator" src={file.picture}/>
 				    </div>
 				    <div className="card-content">
-				      <img src={file.icon}/><span className="card-title activator grey-text text-darken-4">{file.subject}<i className="material-icons right">more_vert</i></span>
+				      <img src={file.icon}/>
+				      <span className="card-title activator grey-text text-darken-4">				      	
+				      	<a className="right" href="#"><i className="material-icons">more_vert</i></a>
+				      	{file.subject}
+				      </span>
 				      <div className="card-buttons">
 				      	<a className="btn-floating btn-medium waves-effect waves-light blue" href="#" onClick={this.openFile.bind(this)}><i className="material-icons">visibility</i></a>
 				      	<a className="btn-floating btn-medium waves-effect waves-light red" href={file.alternateLink} target="_blank"><i className="material-icons">library_books</i></a>
@@ -38,13 +42,13 @@ export default class Card extends React.Component {
 				      <div className="chip">
 					    <img src={file.picture} alt="Contact Person"/>
 				    	{file.commonName}
-					  </div>
-					  <h5>{file.title}</h5>
+					  </div>					  
 				      <h5>{file.subject}</h5>
 				      <h6>Motivado por: {file.motivation}</h6>
 				      {file.tags.map(function(tag, index) {
 				      	return <div key={index} className="chip">{tag}</div>
 				      })}
+				      <div className="chip">{file.title}</div>
 				      <div className={file.shared ? 'chip green' : 'chip blue white-text darken-4'}>
 				      	{file.shared ? 'Compartilhado' : 'Não Compartilhado'}
 				      </div>
