@@ -125,23 +125,27 @@ export default class Editor extends React.Component {
 
 		Utils.notify('ajax.active');
 		updateFile(this.state.file.id, '', content, function(result) {
-			// save content locally
-			var files = self.storage.get('files');
+			if(file.id) {
+				// save content locally
+				var files = self.storage.get('files');
 
-			$.each(files, function(index, file) {
-				if(file.id === self.state.file.id) {
-					file.content = content;
+				$.each(files, function(index, file) {
+					if(file.id === self.state.file.id) {
+						file.content = content;
 
-					return false;
-				}
-			});
+						return false;
+					}
+				});
 
-			self.storage.set('files', files);
+				self.storage.set('files', files);
 
-			Utils.notify('file.update');
-			Utils.notify('ajax.inactive');
+				Utils.notify('file.update');
+				Utils.notify('ajax.inactive');
 
-			Utils.toast('Arquivo salvo!');
+				Utils.toast('Arquivo salvo!');
+			} else {
+				Utils.toast('ERRO: Não foi possível salvar o arquivo.');
+			}
 		});
 	}
 
@@ -170,40 +174,44 @@ export default class Editor extends React.Component {
 
           	Utils.notify('ajax.active');
 			insertFile(fileContent, fileName, function(file) {
-	            content.id = file.id;
-	            content.title = file.title;
-	            content.picture = (file.owners && file.owners.length && file.owners[0].picture && file.owners[0].picture.url) ? file.owners[0].picture.url.replace('s64', 's256') : 'img/default-avatar.png';
-	            content.downloadUrl = file.downloadUrl;
-	            content.shared = false;
-	            content.owner = true;
-	            content.icon = file.iconLink;
-            	content.alternateLink = file.alternateLink;
+				if(file.id) {
+		            content.id = file.id;
+		            content.title = file.title;
+		            content.picture = (file.owners && file.owners.length && file.owners[0].picture && file.owners[0].picture.url) ? file.owners[0].picture.url.replace('s64', 's256') : 'img/default-avatar.png';
+		            content.downloadUrl = file.downloadUrl;
+		            content.shared = false;
+		            content.owner = true;
+		            content.icon = file.iconLink;
+	            	content.alternateLink = file.alternateLink;
 
-				// add tags to the list
-				tags = self.storage.get('tags') || [];
-				tags = tags.concat(content.tags);
+					// add tags to the list
+					tags = self.storage.get('tags') || [];
+					tags = tags.concat(content.tags);
 
-				// normalize and store tag names
-				self.storage.set('tags', tags.filter(function(tag, index, array) {
-					return array.indexOf(tag) === index;
-				}, self).sort());
+					// normalize and store tag names
+					self.storage.set('tags', tags.filter(function(tag, index, array) {
+						return array.indexOf(tag) === index;
+					}, self).sort());
 
-				files = self.storage.get('files');
-				files.push(content);
-				self.storage.set('files', files);
+					files = self.storage.get('files');
+					files.push(content);
+					self.storage.set('files', files);
 
-				Utils.notify('file.update');
+					Utils.notify('file.update');
 
-				// change state for edition
-				self.setState({
-					newFile: false,
-					content: fileContent,
-					file: content
-				});
+					// change state for edition
+					self.setState({
+						newFile: false,
+						content: fileContent,
+						file: content
+					});
 
-				Utils.notify('ajax.inactive');
+					Utils.notify('ajax.inactive');
 
-				Utils.toast('Arquivo criado!');
+					Utils.toast('Arquivo criado!');
+				} else {
+					Utils.toast('ERRO: Não foi possível criar o arquivo.');
+				}
 			});
         } else {
           console.log('File didn\'t match.');
