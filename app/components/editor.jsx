@@ -125,7 +125,7 @@ export default class Editor extends React.Component {
 
 		Utils.notify('ajax.active');
 		updateFile(this.state.file.id, '', content, function(result) {
-			if(file.id) {
+			if(result.id) {
 				// save content locally
 				var files = self.storage.get('files');
 

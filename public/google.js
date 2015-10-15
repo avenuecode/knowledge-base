@@ -76,6 +76,7 @@ function retrieveAllFiles(callback, query) {
       if (nextPageToken) {
         request = gapi.client.drive.files.list({
           'pageToken': nextPageToken,
+          'orderBy': 'title',
           'q': query
         });
 
