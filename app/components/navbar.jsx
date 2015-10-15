@@ -45,7 +45,7 @@ export default class NavBar extends React.Component {
             <span className="brand-logo">AC Knowledge Base</span>
             <a href="#" data-activates="mobile-nav" className="button-collapse"><i className="material-icons">menu</i></a>
 
-            <ul className="right hide-on-med-and-down">
+            <ul className="right hide-on-small-and-down">
               <div className="input-field">
                 <input onChange={this.filterChanged.bind(this)} className="selectize" id="search" type="search" required/>
                 <label><i className="material-icons">search</i></label>
