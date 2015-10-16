@@ -37,7 +37,7 @@ export default class Card extends React.Component {
 				      	{file.subject}
 				      </span>
 				      <div className="card-buttons">
-				      	<a data-position="top" data-tooltip="Ver Documento" className="tooltipped btn-floating btn-medium waves-effect waves-light blue" href="#!" onClick={this.openFile.bind(this)}><i className="material-icons">visibility</i></a>
+				      	<a data-position="top" data-tooltip="Ver Documento" className="tooltipped btn-floating btn-medium waves-effect waves-light blue" href="#" onClick={this.openFile.bind(this)}><i className="material-icons">visibility</i></a>
 				      	<a data-position="top" data-tooltip="Ver Online/Compartilhar" className="tooltipped btn-floating btn-medium waves-effect waves-light red" href={file.alternateLink} target="_blank"><i className="material-icons">library_books</i></a>
 				      </div>
 				    </div>
