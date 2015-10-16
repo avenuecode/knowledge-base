@@ -8,6 +8,8 @@ export default class Card extends React.Component {
 	constructor(props) {
 		super(props);
 
+		var self = this;
+
 		Utils.listen('user.logged', function() {
 	      self.setState({
 	        logged: true
