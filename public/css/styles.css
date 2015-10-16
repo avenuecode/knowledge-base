@@ -59,3 +59,24 @@
   width: 100%;
   min-height: 100%;
 }
+
+/* line 66, ../../scss/styles.scss */
+.help-content {
+  padding: 10px;
+}
+/* line 69, ../../scss/styles.scss */
+.help-content .help-row {
+  margin: 10px;
+}
+/* line 72, ../../scss/styles.scss */
+.help-content .help-row a {
+  margin-right: 10px;
+}
+/* line 77, ../../scss/styles.scss */
+.help-content #importButton {
+  position: inherit;
+}
+/* line 81, ../../scss/styles.scss */
+.help-content #newDocButton {
+  position: inherit;
+}

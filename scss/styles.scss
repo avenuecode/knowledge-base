@@ -62,3 +62,23 @@
     width: 100%;
     min-height: 100%;
 }
+
+.help-content {
+	padding: 10px;
+	
+	.help-row {
+		margin: 10px;
+
+		a {
+			margin-right: 10px;
+		}
+	}
+
+	#importButton {
+		position: inherit;
+	}
+
+	#newDocButton {
+		position: inherit;
+	}
+}
