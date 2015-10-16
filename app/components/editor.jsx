@@ -222,8 +222,8 @@ export default class Editor extends React.Component {
 
 	render() {
 		let contentStyle = {minHeight: '100% !important'},
-			editButton = this.state.fileOwner ? <a href="#" id="editButton" onClick={this.showEditor.bind(this)} className="modal-action waves-effect waves-red btn-flat">Editar</a> : '',
-			saveButton = this.state.fileOwner ? <a href="#" id="saveButton" onClick={this.state.newFile ? this.createContent.bind(this) : this.saveContent.bind(this)} className="modal-action waves-effect waves-blue btn-flat disabled">Salvar</a> : '';
+			editButton = this.state.fileOwner ? <a href="#!" id="editButton" onClick={this.showEditor.bind(this)} className="modal-action waves-effect waves-red btn-flat">Editar</a> : '',
+			saveButton = this.state.fileOwner ? <a href="#!" id="saveButton" onClick={this.state.newFile ? this.createContent.bind(this) : this.saveContent.bind(this)} className="modal-action waves-effect waves-blue btn-flat disabled">Salvar</a> : '';
 
 		return (
 			<div id="mdModal" className="modal modal-fixed-footer">
@@ -233,7 +233,7 @@ export default class Editor extends React.Component {
 	            <textarea id="contentToEdit" className="hide"></textarea>
 	          </div>
 	          <div className="modal-footer">
-	            <a href="#" className="modal-action modal-close waves-effect waves-red btn-flat">Fechar</a>
+	            <a href="#!" className="modal-action modal-close waves-effect waves-red btn-flat">Fechar</a>
 	            {editButton}
 	            {saveButton}
 	          </div>
