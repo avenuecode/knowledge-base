@@ -5,13 +5,24 @@ var CLIENT_ID = '325788407560-gj9lmkmo6ovfkmqgngrert4odh9vl6uu.apps.googleuserco
 var SCOPES = ['https://www.googleapis.com/auth/drive'];
 
 /**
- * Check if current user has authorized this application.
+ * Run authentication flow.
  */
 function checkAuth() {
   gapi.auth.authorize({
       'client_id': CLIENT_ID,
       'scope': SCOPES.join(' '),
       'immediate': false
+    }, handleAuthResult);
+}
+
+/**
+ * Check if current user has authorized this application.
+ */
+function checkImediateAuth() {
+  gapi.auth.authorize({
+      'client_id': CLIENT_ID,
+      'scope': SCOPES.join(' '),
+      'immediate': true
     }, handleAuthResult);
 }
 
@@ -42,7 +53,7 @@ function handleAuthClick(event) {
  * Triggers the event indicating the loading is finished
  */
 function informFinishLoading() {
-  console.log('GOOGLE DRIVE API LOADDED');
+  console.log('GOOGLE DRIVE API LOADDED');  
 
   $(document).trigger('user.logged');
 }
@@ -52,6 +63,8 @@ function informFinishLoading() {
  */
 function informGoogleLoaded() {
   console.log('GOOGLE API LOADDED');
+
+  checkImediateAuth();
 
   $(document).trigger('user.ready'); 
 }
