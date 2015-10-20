@@ -26,9 +26,13 @@ export default class Card extends React.Component {
 
 		return (
 			<div className={this.props.className}>
-				<div className='card pgCard'>
+				<div className='card pgCard medium'>
 				    <div className="card-image waves-effect waves-block waves-light">
 				      <img className="activator" src={file.picture}/>
+				      <div className="card-buttons">
+				      	<a data-position="top" data-tooltip="Ver Documento" className="tooltipped btn-floating btn-medium waves-effect waves-light blue" href="#" onClick={this.openFile.bind(this)}><i className="material-icons">visibility</i></a>
+				      	<a data-position="top" data-tooltip="Ver Online/Compartilhar" className="tooltipped btn-floating btn-medium waves-effect waves-light red" href={file.alternateLink} target="_blank"><i className="material-icons">library_books</i></a>
+				      </div>
 				    </div>
 				    <div className="card-content">
 				      <img src={file.icon}/>
@@ -36,10 +40,6 @@ export default class Card extends React.Component {
 				      	<a data-position="left" data-tooltip="Outros Dados" className="tooltipped right" href="#!"><i className="material-icons">more_vert</i></a>
 				      	{file.subject}
 				      </span>
-				      <div className="card-buttons">
-				      	<a data-position="top" data-tooltip="Ver Documento" className="tooltipped btn-floating btn-medium waves-effect waves-light blue" href="#" onClick={this.openFile.bind(this)}><i className="material-icons">visibility</i></a>
-				      	<a data-position="top" data-tooltip="Ver Online/Compartilhar" className="tooltipped btn-floating btn-medium waves-effect waves-light red" href={file.alternateLink} target="_blank"><i className="material-icons">library_books</i></a>
-				      </div>
 				    </div>
 				    <div className="card-reveal">
 				      <span className="card-title grey-text text-darken-4"><i className="material-icons right">close</i></span>

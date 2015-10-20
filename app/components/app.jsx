@@ -122,7 +122,7 @@ export default class App extends React.Component {
       } else {
         Utils.notify('ajax.inactive');
       }
-    }, "fullText contains '\"ACKB: 1.0\"'");
+    }, "fullText contains 'ACKB:' and not trashed");
   }
 
   render() {

@@ -39,19 +39,21 @@
 }
 /* line 43, ../../scss/styles.scss */
 .pgCard .card-buttons {
-  text-align: right;
+  position: absolute;
+  bottom: 10px;
+  right: 5px;
 }
-/* line 46, ../../scss/styles.scss */
+/* line 48, ../../scss/styles.scss */
 .pgCard .card-buttons a {
   margin-left: 5px;
 }
 
-/* line 53, ../../scss/styles.scss */
+/* line 55, ../../scss/styles.scss */
 .pgNav .brand-logo {
   padding-left: 20px;
 }
 
-/* line 58, ../../scss/styles.scss */
+/* line 60, ../../scss/styles.scss */
 .fullScreenModalClass {
   position: absolute;
   top: 0 !important;
@@ -60,23 +62,23 @@
   min-height: 100%;
 }
 
-/* line 66, ../../scss/styles.scss */
+/* line 68, ../../scss/styles.scss */
 .help-content {
   padding: 10px;
 }
-/* line 69, ../../scss/styles.scss */
+/* line 71, ../../scss/styles.scss */
 .help-content .help-row {
   margin: 10px;
 }
-/* line 72, ../../scss/styles.scss */
+/* line 74, ../../scss/styles.scss */
 .help-content .help-row a {
   margin-right: 10px;
 }
-/* line 77, ../../scss/styles.scss */
+/* line 79, ../../scss/styles.scss */
 .help-content #importButton {
   position: inherit;
 }
-/* line 81, ../../scss/styles.scss */
+/* line 83, ../../scss/styles.scss */
 .help-content #newDocButton {
   position: inherit;
 }

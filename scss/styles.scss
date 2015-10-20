@@ -41,7 +41,9 @@
 	}
 
 	.card-buttons {
-		text-align: right;
+		position: absolute;
+		bottom: 10px;
+		right: 5px;
 
 		a {
 			margin-left: 5px;
